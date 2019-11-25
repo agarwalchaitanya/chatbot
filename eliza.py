@@ -39,25 +39,25 @@ class eliza:
 gReflections = {
   "am"   : "are",
   "was"  : "were",
-  "i"    : "you",
+  "मैं"    : "आप ",
   "i'd"  : "you would",
-  "i've"  : "you have",
+  "मेरे पास"  : "आपके पास",
   "i'll"  : "you will",
-  "my"  : "your",
+  "मेरा"  : "आपका",
   "are"  : "am",
   "you've": "I have",
   "you'll": "I will",
   "your"  : "my",
-  "yours"  : "mine",
+  "आपका"  : "मेरा",
   "you"  : "me",
-  "me"  : "you"
+  "मुझे"  : "आपको"
 }
 
 gPats = [
-  [r'I need (.*)',
-  [  "Why do you need %1?",
-    "Would it really help you to get %1?",
-    "Are you sure you need %1?"]],
+  [r'मुझे (.*) चाहिए',
+  [  "आपको %1 क्यों चाहिए ?",
+    "क्या आपको %1 से मदद मिलेगी??",
+    "क्या आपको यकीन है आपको %1 चाहिए??"]],
 
   [r'Why don\'?t you ([^\?]*)\??',
   [  "Do you really think I don't %1?",
@@ -75,10 +75,10 @@ gPats = [
     "Perhaps you could %1 if you tried.",
     "What would it take for you to %1?"]],
 
-  [r'I am (.*)',
-  [  "Did you come to me because you are %1?",
-    "How long have you been %1?",
-    "How do you feel about being %1?"]],
+  [r'में (.*) हूँ',
+  [  "क्या आप मेरे पास आये क्यूंकि आप %1 हो??",
+    "आप कितने टाइम से %1 हो??",
+    "आप को कैसा लगता है की आप (.*) हो??"]],
 
   [r'I\'?m (.*)',
   [  "How does being %1 make you feel?",
@@ -86,11 +86,11 @@ gPats = [
     "Why do you tell me you're %1?",
     "Why do you think you're %1?"]],
 
-  [r'Are you ([^\?]*)\??',
-  [  "Why does it matter whether I am %1?",
-    "Would you prefer it if I were not %1?",
-    "Perhaps you believe I am %1.",
-    "I may be %1 -- what do you think?"]],
+  [r'क्या आप ([^\?]*) हो\??',
+  [  "क्या फरक पड़ता है की मैं %1 हूँ?",
+    "क्या आपको बेहतर लगेगा की मैं %1 ना हूँ?",
+    "मशायद आपको लगता है मैं %1 हूँ।",
+    "मैं शायद %1 हूँ। आपको क्या लगता है?"]],
 
   [r'What (.*)',
   [  "Why do you ask?",
@@ -102,20 +102,19 @@ gPats = [
     "Perhaps you can answer your own question.",
     "What is it you're really asking?"]],
 
-  [r'Because (.*)',
-  [  "Is that the real reason?",
-    "What other reasons come to mind?",
-    "Does that reason apply to anything else?",
-    "If %1, what else must be true?"]],
+  [r'क्यूंकि (.*)',
+  [  "क्या यह असली कारन है %1?",
+    "और क्या कारन आते है आपके दिमाग में?",
+    "क्या यह किसी और पे भी लागू होता है?",
+    "अगर %1, तो और क्या सच है?"]],
 
   [r'(.*) sorry (.*)',
   [  "There are many times when no apology is needed.",
     "What feelings do you have when you apologize?"]],
 
-  [r'Hello(.*)',
-  [  "Hello... I'm glad you could drop by today.",
-    "Hi there... how are you today?",
-    "Hello, how are you feeling today?"]],
+  [r'नमस्ते(.*)',
+  [  "नमस्ते में खुश हूँ की आप आये।",
+    "नमस्ते, आज आप कैसे हो?"]],
 
   [r'I think (.*)',
   [  "Do you doubt %1?",
@@ -127,9 +126,9 @@ gPats = [
     "When you think of a friend, what comes to mind?",
     "Why don't you tell me about a childhood friend?"]],
 
-  [r'Yes',
-  [  "You seem quite sure.",
-    "OK, but can you elaborate a bit?"]],
+  [r'हाँ',
+  [  "आप काफी विशवास से बोल रहे हो।",
+    "ठीक है। पर इस बारे में क्या आप और बता सकते है?"]],
 
   [r'(.*) computer(.*)',
   [  "Are you really talking about me?",
@@ -194,10 +193,9 @@ gPats = [
     "It's likely that there is %1.",
     "Would you like there to be %1?"]],
 
-  [r'My (.*)',
-  [  "I see, your %1.",
-    "Why do you say that your %1?",
-    "When your %1, how do you feel?"]],
+  [r'मेरा|मेरी (.*)',
+  [  "अच्छा, आपका %1.",
+    "आप ऐसा क्यों कह रहे की आपका %1?"]],
 
   [r'You (.*)',
   [  "We should be discussing you, not me.",
@@ -208,11 +206,10 @@ gPats = [
   [  "Why don't you tell me the reason why %1?",
     "Why do you think %1?" ]],
 
-  [r'I want (.*)',
-  [  "What would it mean to you if you got %1?",
-    "Why do you want %1?",
-    "What would you do if you got %1?",
-    "If you got %1, then what would you do?"]],
+  [r'मुझे (.*) चाहिए',
+  [  "आपके लिए %1 का क्या महत्व है??",
+    "आपको %1 क्यों चाहिए??",
+    "अगर आपको मिलेगा तो आप क्या करोगे?"]],
 
   [r'(.*) mother(.*)',
   [  "Tell me more about your mother.",
@@ -236,27 +233,25 @@ gPats = [
     "How do you think your childhood experiences relate to your feelings today?"]],
 
   [r'(.*)\?',
-  [  "Why do you ask that?",
+  [  "आप ऐसा क्यों पूछ रहे है?",
     "Please consider whether you can answer your own question.",
     "Perhaps the answer lies within yourself?",
-    "Why don't you tell me?"]],
+    "इस सवाल का जवाब आप ही क्यों नहीं देते?"]],
 
-  [r'quit',
-  [  "Thank you for talking with me.",
-    "Good-bye.",
-    "Thank you, that will be $150.  Have a good day!"]],
+  [r'अलविदा',
+  [  "मुझ से बात करने के लिए शुक्रिया।",
+    "अलविदा",
+    "धन्यवाद। आपका १५००० रूपए का बिल है।"]],
 
   [r'(.*)',
-  [  "Please tell me more.",
+  [  "मुझ इस बारे में और बताइये। ",
     "Let's change focus a bit... Tell me about your family.",
-    "Can you elaborate on that?",
-    "Why do you say that %1?",
-    "I see.",
-    "Very interesting.",
+    "आप %1 क्यों बोल रहे है?",
+    "अच्छा...",
+    "बहुत ही रोचक।",
     "%1.",
-    "I see.  And what does that tell you?",
-    "How does that make you feel?",
-    "How do you feel when you say that?"]]
+    "इससे आपको कैसा महसुस हो रहा है?",
+    "यह कह कर कैसा महसूस करते हो?"]]
   ]
 
 def command_interface():
