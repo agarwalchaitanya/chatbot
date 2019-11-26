@@ -103,7 +103,7 @@ gPats = [
     "What is it you're really asking?"]],
 
   [r'क्यूंकि (.*)',
-  [  "क्या यह असली कारन है %1?",
+  [  
     "और क्या कारन आते है आपके दिमाग में?",
     "क्या यह किसी और पे भी लागू होता है?",
     "अगर %1, तो और क्या सच है?"]],
@@ -245,7 +245,6 @@ gPats = [
 
   [r'(.*)',
   [  "मुझ इस बारे में और बताइये। ",
-    "Let's change focus a bit... Tell me about your family.",
     "आप %1 क्यों बोल रहे है?",
     "अच्छा...",
     "बहुत ही रोचक।",
@@ -256,18 +255,18 @@ gPats = [
 
 def command_interface():
   print('Therapist\n---------')
-  print('Talk to the program by typing in plain English, using normal upper-')
-  print('and lower-case letters and punctuation.  Enter "quit" when done.')
+  print('Talk to the program by typing in plain Hindi.')
+  print('Enter "अलविदा" when done.')
   print('='*72)
-  print('Hello.  How are you feeling today?')
+  print('नमस्ते! आप आज कैसा मह्सूस कर रहे हैं?')
 
   s = ''
   therapist = eliza();
-  while s != 'quit':
+  while s != 'अलविदा':
     try:
       s = input('> ')
     except EOFError:
-      s = 'quit'
+      s = 'अलविदा'
     print(s)
     while s[-1] in '!.':
       s = s[:-1]
