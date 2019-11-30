@@ -45,7 +45,7 @@ gReflections = {
   "i'll"  : "you will",
   "मेरा"  : "आपका",
   "are"  : "am",
-  "you've": "I have",
+  "आपके पास": "मेरे पास",
   "you'll": "I will",
   "your"  : "my",
   "आपका"  : "मेरा",
@@ -218,10 +218,9 @@ gPats = [
     "How does this relate to your feelings today?",
     "Good family relations are important."]],
 
-  [r'(.*) father(.*)',
-  [  "Tell me more about your father.",
-    "How did your father make you feel?",
-    "How do you feel about your father?",
+  [r'(.*) पिताजी|पिता|पापा|बाप(.*)',
+  [  "अपने पिताजी के बारे में और बताइये?",
+    "आप अपने पिताजी के बारे में क्या सोचते है?",
     "Does your relationship with your father relate to your feelings today?",
     "Do you have trouble showing affection with your family?"]],
 
@@ -234,8 +233,7 @@ gPats = [
 
   [r'(.*)\?',
   [  "आप ऐसा क्यों पूछ रहे है?",
-    "Please consider whether you can answer your own question.",
-    "Perhaps the answer lies within yourself?",
+    "शायद जवाब आपके पास ही है?",
     "इस सवाल का जवाब आप ही क्यों नहीं देते?"]],
 
   [r'अलविदा',
@@ -245,7 +243,7 @@ gPats = [
 
   [r'(.*)',
   [  "मुझ इस बारे में और बताइये। ",
-    "Let's change focus a bit... Tell me about your family.",
+    "चलिए हम विषय बदलते है.... आप अपने परिवार के बारे में बताइये।",
     "आप %1 क्यों बोल रहे है?",
     "अच्छा...",
     "बहुत ही रोचक।",
