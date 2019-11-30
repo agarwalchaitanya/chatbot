@@ -7,6 +7,7 @@ class eliza:
     self.keys = list(map(lambda x:re.compile(x[0], re.IGNORECASE),gPats))
     self.values = list(map(lambda x:x[1],gPats))
 
+  #to clean the input string
   def translate(self,str,dict):
     words = str.lower().split()
     keys = dict.keys();
@@ -31,27 +32,28 @@ class eliza:
             self.translate(match.group(num),gReflections) + \
             resp[pos+2:]
           pos = resp.find('%')
+        # fix munged punctuation at the end
+        if resp[-2:] == '?.': resp = resp[:-2] + '.'
+        if resp[-2:] == '??': resp = resp[:-2] + '?'
         return resp
 
+#reflection in the hindi language
 gReflections = {
-  "am"   : "are",
-  "was"  : "were",
-  "मैं"    : "आप ",
-  "i'd"  : "you would",
+  "हूँ"   : "हो",
+  "था"  : "थे",
+  "मैं"    : "आप",
   "मेरे पास"  : "आपके पास",
-  "i'll"  : "you will",
   "मेरा"  : "आपका",
-  "are"  : "am",
+  "हो"  : "हूँ",
   "आपके पास": "मेरे पास",
-  "you'll": "I will",
-  "your"  : "my",
   "आपका"  : "मेरा",
   "आप"  : "मैं",
   "मुझे"  : "आपको"
 }
 
+#regular expressions for matching
 gPats = [
-  [r'मुझे (.*) चाहिए (.*)',
+  [r'मुझे (.*) चाहिए',
   [  "आपको %1 क्यों चाहिए ?",
     "क्या आपको %1 से मदद मिलेगी??",
     "क्या आपको यकीन है आपको %1 चाहिए??"]],
@@ -68,7 +70,7 @@ gPats = [
     "मैं शायद %1 हूँ। आपको क्या लगता है?"]],
 
   [r'क्यूंकि (.*)',
-  [  
+  [  "क्या यह असली कारन है %1?",
     "और क्या कारन आते है आपके दिमाग में?",
     "क्या यह किसी और पे भी लागू होता है?",
     "अगर %1, तो और क्या सच है?"]],
@@ -76,6 +78,10 @@ gPats = [
   [r'नमस्ते(.*)',
   [  "नमस्ते में खुश हूँ की आप आये।",
     "नमस्ते, आज आप कैसे हो?"]],
+
+  [r'(.*) दोस्त (.*)',
+  [  "मुझे अपने दोस्तों के बारे में और बताइये",
+    "आपके सबसे अच्छे बचपन के दोस्त के बारे में बताइये"]],
 
   [r'हाँ',
   [  "आप काफी विशवास से बोल रहे हो।",
@@ -85,39 +91,26 @@ gPats = [
   [  "अच्छा, आपका %1.",
     "आप ऐसा क्यों कह रहे की आपका %1?"]],
 
+  [r'आप (.*)',
+  [  "हमे आपके बारे में बात करनी है, मेरे नहीं",
+    "आप ऐसा मेरे बारे में क्यों बोल रहे हो?",]],
+
+  [r' (.*) क्यों (.*)',
+  [  "आपको क्या लगता है क्यों?",
+    "यह आप मुझे बताइये?" ]],
+
   [r'मुझे (.*) चाहिए',
   [  "आपके लिए %1 का क्या महत्व है??",
     "आपको %1 क्यों चाहिए??",
     "अगर आपको मिलेगा तो आप क्या करोगे?"]],
 
-<<<<<<< HEAD
-  [r'(.*) mother(.*)',
-  [  "Tell me more about your mother.",
-    "What was your relationship with your mother like?",
-    "How do you feel about your mother?",
-    "How does this relate to your feelings today?",
-    "Good family relations are important."]],
-
   [r'(.*) पिताजी|पिता|पापा|बाप(.*)',
   [  "अपने पिताजी के बारे में और बताइये?",
-    "आप अपने पिताजी के बारे में क्या सोचते है?",
-    "Does your relationship with your father relate to your feelings today?",
-    "Do you have trouble showing affection with your family?"]],
-
-  [r'(.*) child(.*)',
-  [  "Did you have close friends as a child?",
-    "What is your favorite childhood memory?",
-    "Do you remember any dreams or nightmares from childhood?",
-    "Did the other children sometimes tease you?",
-    "How do you think your childhood experiences relate to your feelings today?"]],
+    "आप अपने पिताजी के बारे में क्या सोचते है?",]],
 
   [r'(.*)\?',
   [  "आप ऐसा क्यों पूछ रहे है?",
     "शायद जवाब आपके पास ही है?",
-=======
-  [r'(.*)\?',
-  [  "आप ऐसा क्यों पूछ रहे है?",
->>>>>>> 5b0cb482a03ff4f525fa80d6932d6f18f2ddc779
     "इस सवाल का जवाब आप ही क्यों नहीं देते?"]],
 
   [r'अलविदा',
@@ -127,10 +120,7 @@ gPats = [
 
   [r'(.*)',
   [  "मुझ इस बारे में और बताइये। ",
-<<<<<<< HEAD
     "चलिए हम विषय बदलते है.... आप अपने परिवार के बारे में बताइये।",
-=======
->>>>>>> 5b0cb482a03ff4f525fa80d6932d6f18f2ddc779
     "आप %1 क्यों बोल रहे है?",
     "अच्छा...",
     "बहुत ही रोचक।",
@@ -140,14 +130,14 @@ gPats = [
   ]
 
 def command_interface():
-  print('Therapist\n---------')
-  print('Talk to the program by typing in plain Hindi.')
+  print('Therapist - ELIZA (hindi)\n---------')
+  print('Interact with the program by typing in Hindi,')
   print('Enter "अलविदा" when done.')
   print('='*72)
-  print('नमस्ते! आप आज कैसा मह्सूस कर रहे हैं?')
+  print('आपका स्वागत है। आज आप कैसे है? ?')
 
   s = ''
-  therapist = eliza();
+  therapist = eliza()
   while s != 'अलविदा':
     try:
       s = input('> ')
@@ -159,5 +149,6 @@ def command_interface():
     print(therapist.respond(s))
 
 
+#main function
 if __name__ == "__main__":
   command_interface()
