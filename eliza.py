@@ -42,7 +42,7 @@ gReflections = {
   "i'll"  : "you will",
   "मेरा"  : "आपका",
   "are"  : "am",
-  "you've": "I have",
+  "आपके पास": "मेरे पास",
   "you'll": "I will",
   "your"  : "my",
   "आपका"  : "मेरा",
@@ -90,8 +90,34 @@ gPats = [
     "आपको %1 क्यों चाहिए??",
     "अगर आपको मिलेगा तो आप क्या करोगे?"]],
 
+<<<<<<< HEAD
+  [r'(.*) mother(.*)',
+  [  "Tell me more about your mother.",
+    "What was your relationship with your mother like?",
+    "How do you feel about your mother?",
+    "How does this relate to your feelings today?",
+    "Good family relations are important."]],
+
+  [r'(.*) पिताजी|पिता|पापा|बाप(.*)',
+  [  "अपने पिताजी के बारे में और बताइये?",
+    "आप अपने पिताजी के बारे में क्या सोचते है?",
+    "Does your relationship with your father relate to your feelings today?",
+    "Do you have trouble showing affection with your family?"]],
+
+  [r'(.*) child(.*)',
+  [  "Did you have close friends as a child?",
+    "What is your favorite childhood memory?",
+    "Do you remember any dreams or nightmares from childhood?",
+    "Did the other children sometimes tease you?",
+    "How do you think your childhood experiences relate to your feelings today?"]],
+
   [r'(.*)\?',
   [  "आप ऐसा क्यों पूछ रहे है?",
+    "शायद जवाब आपके पास ही है?",
+=======
+  [r'(.*)\?',
+  [  "आप ऐसा क्यों पूछ रहे है?",
+>>>>>>> 5b0cb482a03ff4f525fa80d6932d6f18f2ddc779
     "इस सवाल का जवाब आप ही क्यों नहीं देते?"]],
 
   [r'अलविदा',
@@ -101,6 +127,10 @@ gPats = [
 
   [r'(.*)',
   [  "मुझ इस बारे में और बताइये। ",
+<<<<<<< HEAD
+    "चलिए हम विषय बदलते है.... आप अपने परिवार के बारे में बताइये।",
+=======
+>>>>>>> 5b0cb482a03ff4f525fa80d6932d6f18f2ddc779
     "आप %1 क्यों बोल रहे है?",
     "अच्छा...",
     "बहुत ही रोचक।",
