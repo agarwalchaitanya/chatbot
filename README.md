@@ -17,7 +17,8 @@ Inspired from the original ELIZA idea developed by Joseph Weizenbaum (Stanford) 
 - To see the programs output using the given testcase, 
 `cat example.txt | python eliza.py`
 
-### Additional Resources
+### Additional Resources (in folder data/)
 - Project Report - `report.pdf`
-- Research papers and their summaries - `summaries/`
+- Research papers and their summaries - `CL Research Summaries.pdf`
 - Project presentation - `Rule Based Chatbot.pdf`
+- Trivia (coversation between PARRY and ELIZA) - `trivia.pdf`
