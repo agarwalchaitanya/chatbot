@@ -19,6 +19,5 @@ Inspired from the original ELIZA idea developed by Joseph Weizenbaum (Stanford) 
 
 ### Additional Resources
 - Project Report - `report.pdf`
-- Research papers - `papers/`
-- Research papers' summaries - `summaries/`
-- Project presentation - `.ppt`
+- Research papers and their summaries - `summaries/`
+- Project presentation - `Rule Based Chatbot.pdf`

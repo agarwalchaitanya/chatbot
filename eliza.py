@@ -140,13 +140,13 @@ def command_interface():
   therapist = eliza()
   while s != 'अलविदा':
     try:
-      s = input('> ')
+      s = input('You: ')
     except EOFError:
       s = 'अलविदा'
     print(s)
     while s[-1] in '!.':
       s = s[:-1]
-    print(therapist.respond(s))
+    print("ELIZA: " + therapist.respond(s))
 
 
 #main function
