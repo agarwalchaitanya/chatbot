@@ -1,6 +1,6 @@
 # chatbot
-Rule based hindi chat bot developed for a Computational Linguistics - 2 course @IIITH
-Inspired from the original ELIZA idea developed by Joseph Weizenbaum (Stanford) in January 1966
+Rule based hindi chat bot developed for Computational Linguistics - 2 course @IIITH
+Inspired from the original ELIZA idea developed by Joseph Weizenbaum (Stanford) in January 1966.
 
 ### Setup
 - Make a virtual environment using 
